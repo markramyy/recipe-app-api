@@ -14,15 +14,17 @@ class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):
         """Create, save and return new user."""
+
         user = self.model(email=email, **extra_fields) # create new user model
         user.set_password(password) # encrypt password
-        user.save(using=self._db) # save to database and support multiple database
+        user.save(using=self._db) # save & support multiple database
 
         return user
 
 
 class User(AbstractBaseUser, PermissionsMixin):
     """User in the system."""
+
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
