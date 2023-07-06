@@ -3,7 +3,6 @@ Tests for models.
 """
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-# Helper function provided by Django in order to get the default user model
 
 
 class ModelTests(TestCase):
